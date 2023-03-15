@@ -12,6 +12,16 @@ clone this git repository
 
 ## Usage
 
-> cd fileSearchCli
+> ### cd fileSearchCli
 >> `python search_cli.py`
->> # chose to search a file or directory
+>> ### chose to search a file or directory
+>> ### [SEARCH]: 1 for searching files
+>>  ### [SEARCH]: 2 for searching directories
+
+
+## Termux
+> ### for termux users, change the `rootdir` to `'/data/da/cvom.termux'`
+>> // rootdir = 'data/data/com.termux'  
+
+# contributions
+> ### your contributions wii be highly appreciated
