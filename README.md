@@ -20,8 +20,8 @@
 
 
 ## Termux
-> #### for termux users, change the `rootdir` to `'/data/data/cvom.termux'`
->> // rootdir = 'data/data/com.termux'  
+> #### for termux users, change the `rootdir` to `'/data/data/com.termux'`
+>>  rootdir = 'data/data/com.termux'  
 
 # contributions
 > #### your contributions wii be highly appreciated
