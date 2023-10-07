@@ -1,67 +1,71 @@
-"""
-
-"""
-
-
-from datetime import datetime
-import time
 import os
+import time
 
+class FileSearch:
+    def __init__(self, rootdir):
+        """
+        Initialize the FileSearch object with the root directory.
 
+        Args:
+            rootdir (str): The root directory where the search will start.
+        """
+        self.rootdir = rootdir
 
-class bcolors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-
-
-
-#start time
-start = time.strftime('%S')
-rootdir = '/' #for kali linux
-# rootdir = '/data/data/com.termux' #for termux
-option = input(bcolors.WARNING + "what do you want to search for?[1]:file ,[2]:directory : ")
-search_item = input(bcolors.OKCYAN + '+++++[SEARCH]:\t')
-time.sleep(2)
-class FileSearch(bcolors):
-    def __init__(self):
-        pass
     def search_file(self, search_item):
-        print(bcolors.OKCYAN + "searching.........")	
-        for dirpaths, dirnames, filenames in os.walk(rootdir):
+        """
+        Search for files with a given name.
+
+        Args:
+            search_item (str): The name of the file to search for.
+        """
+        start = time.time()
+        print("Searching for files...")
+        found_files = []
+        for dirpath, _, filenames in os.walk(self.rootdir):
             if search_item in filenames:
-                print(bcolors.OKGREEN + "+++[FILES IN THAT DIRECTORY] :", filenames, '\n')
-                print(bcolors.OKGREEN+'+++[TO THE DIRECTORY] :', os.path.join(dirpaths, search_item), '\n')
-                stop = time.strftime('%S')
-                print(bcolors.OKGREEN + '+++[ATTEMPTS] :', len(dirpaths), '\n')
-                print(bcolors.OKGREEN + '+++[TIME] :', int(stop)-int(start), ' seconds\n')
-                print(bcolors.HEADER + '\n+++++++++++++++++++++++++++++++++++++\n')
-	
+                found_files.append((dirpath, search_item))
+
+        if found_files:
+            for dirpath, filename in found_files:
+                print(f"File found: {os.path.join(dirpath, filename)}")
+            print(f"Total files found: {len(found_files)}")
+            print(f"Time taken: {time.time() - start:.2f} seconds")
+        else:
+            print(f"No files found with the name '{search_item}'.")
+
     def search_dir(self, search_item):
-        print(bcolors.OKGREEN + "\nsearching.........\n")	
-        time.sleep(2)
-        for dirpaths, dirnames, filenames in os.walk(rootdir):
+        """
+        Search for directories with a given name.
+
+        Args:
+            search_item (str): The name of the directory to search for.
+        """
+        start = time.time()
+        print("Searching for directories...")
+        found_dirs = []
+        for dirpath, dirnames, _ in os.walk(self.rootdir):
             if search_item in dirnames:
-                stop = time.strftime('%S')
-                print(bcolors.OKBLUE + '+++[PATH] :' , os.path.join(dirpaths, search_item), '\n')
-                print(bcolors.OKGREEN + '+++[TIME] :', int(stop)-int(start), 'seconds\n' )
-                print(bcolors.OKGREEN + '+++[ATTEMPTS] :',len(dirpaths), '\n')
-                print(bcolors.HEADER + '\n+++++++++++++++++++++++++++++++++++++\n')
+                found_dirs.append(os.path.join(dirpath, search_item))
 
+        if found_dirs:
+            for found_dir in found_dirs:
+                print(f"Directory found: {found_dir}")
+            print(f"Total directories found: {len(found_dirs)}")
+            print(f"Time taken: {time.time() - start:.2f} seconds")
+        else:
+            print(f"No directories found with the name '{search_item}'.")
 
-searcher = FileSearch()
 
 if __name__ == "__main__":
+    rootdir = input("Enter the root directory path: ")
+    option = input("What do you want to search for? [1]: file, [2]: directory: ")
+    search_item = input("Enter the search term: ")
+
+    searcher = FileSearch(rootdir)
+
     if option == '1':
         searcher.search_file(search_item)
     elif option == '2':
         searcher.search_dir(search_item)
-
-
-
+    else:
+        print("Invalid option. Please choose 1 for files or 2 for directories.")
