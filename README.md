@@ -1,10 +1,8 @@
 # FileSearchCli
 - A python script that helps you search files and directories in the terminal  
 
-
-
 ## How the code works 
-GitHub Copilot: The active selection is a Python script that searches for files and directories in a given root directory. The script defines a `FileSearch` class that takes the root directory as an argument and has two methods: `search_file` and `search_dir`. The `search_file` method searches for files with a given name in the root directory and its subdirectories, while the `search_dir` method searches for directories with a given name in the same location. 
+ The active selection is a Python script that searches for files and directories in a given root directory. The script defines a `FileSearch` class that takes the root directory as an argument and has two methods: `search_file` and `search_dir`. The `search_file` method searches for files with a given name in the root directory and its subdirectories, while the `search_dir` method searches for directories with a given name in the same location. 
 
 The script uses the `os` and `time` modules to perform the search and measure the time taken. The `os.walk` method is used to traverse the directory tree and find the files and directories. The search results are stored in lists and printed to the console using colored text to distinguish between files and directories found and to indicate success or failure of the search. 
 
