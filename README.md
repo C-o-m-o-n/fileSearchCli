@@ -2,6 +2,7 @@
 - A python script that helps you search files and directories in the terminal  
 
 
+
 ## How the code works 
 GitHub Copilot: The active selection is a Python script that searches for files and directories in a given root directory. The script defines a `FileSearch` class that takes the root directory as an argument and has two methods: `search_file` and `search_dir`. The `search_file` method searches for files with a given name in the root directory and its subdirectories, while the `search_dir` method searches for directories with a given name in the same location. 
 
