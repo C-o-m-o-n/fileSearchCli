@@ -40,4 +40,4 @@ To improve the readability of the code, the `search_file` and `search_dir` metho
 >>  rootdir = 'data/data/com.termux'  
 
 # contributions
-> #### your contributions wii be highly appreciated
+> #### Your contributions wii be highly appreciated
